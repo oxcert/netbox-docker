@@ -57,7 +57,7 @@ jobs:
     env:
       GH_ACTION: enable
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      IMAGE_NAMES: docker.io/netboxcommunity/netbox
+      IMAGE_NAMES: ghcr.io/oxcert/netbox
     runs-on: ubuntu-latest
     name: Builds new NetBox Docker Images
     steps:
