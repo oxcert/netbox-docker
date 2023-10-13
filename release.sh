@@ -150,7 +150,7 @@ git_merge() {
   echo_ok "The branch '${2}' was merged."
 }
 
-git_merge() {
+git_rebase() {
   echomoji ⏩ "»" "Rebasing onto '${1}'…"
   if ! git rebase "${1}"; then
     echo_nok "Could not rebase onto '${1}'."
