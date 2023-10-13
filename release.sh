@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEFAULT_REPO=netbox-community/netbox-docker
+DEFAULT_REPO=oxcert/netbox-docker
 REPO="${REPO-${DEFAULT_REPO}}"
 
 echomoji() {
@@ -105,9 +105,9 @@ check_develop() {
 }
 
 check_release() {
-  echomoji 📋 "?" "Checking 'release' branch"
+  echomoji 📋 "?" "Checking 'oxcert' branch"
 
-  check_upstream release
+  check_upstream oxcert
   check_clean_repo
   check_latest
 }
@@ -170,7 +170,7 @@ check_origin
 check_develop
 check_tag
 
-git_switch release
+git_switch oxcert
 check_release
 
 echomoji 📋 "▶︎" "Releasing '$(<VERSION)'"
@@ -179,10 +179,10 @@ git_merge develop
 check_tag
 git_tag "$(<VERSION)"
 
-git_push "origin" release
+git_push "origin" oxcert
 git_push "origin" "$(<VERSION)"
 
 git_switch develop
-git_rebase release
+git_rebase oxcert
 
 echomoji ✅ "◼︎" "The release of '$(<VERSION)' is complete."
