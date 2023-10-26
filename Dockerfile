@@ -41,7 +41,7 @@ RUN \
     sed -i -e 's/social-auth-core\[openidconnect\]/social-auth-core\[all\]/g' /requirements.txt && \
     /opt/netbox/venv/bin/pip install \
       -r /requirements.txt \
-      -r /requirements-container.txt
+      -r /requirements-container.txt \
       -r /requirements-plugins.txt
 
 ###
