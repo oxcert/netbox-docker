@@ -93,6 +93,13 @@ COPY docker/launch-netbox.sh /opt/netbox/launch-netbox.sh
 COPY configuration/ /etc/netbox/config/
 COPY docker/nginx-unit.json /etc/unit/
 
+##################
+# OxCERT Additions
+##################
+
+COPY requirements-plugins.txt /opt/netbox
+RUN /opt/netbox/venv/pip install -r /requirements-plugins.txt 
+
 WORKDIR /opt/netbox/netbox
 
 # Must set permissions for '/opt/netbox/netbox/media' directory
