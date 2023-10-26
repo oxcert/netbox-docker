@@ -98,7 +98,7 @@ COPY docker/nginx-unit.json /etc/unit/
 ##################
 
 COPY requirements-plugins.txt /opt/netbox
-RUN /opt/netbox/venv/pip install -r /requirements-plugins.txt 
+RUN /opt/netbox/venv/pip install -r /requirements-plugins.txt
 
 WORKDIR /opt/netbox/netbox
 
