@@ -29,7 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       wheel
 
 ARG NETBOX_PATH
-COPY ${NETBOX_PATH}/requirements.txt requirements-container.txt /
+COPY ${NETBOX_PATH}/requirements.txt requirements-container.txt requirements-plugins.txt /
 RUN \
     # We compile 'psycopg' in the build process
     sed -i -e '/psycopg/d' /requirements.txt && \
@@ -42,6 +42,7 @@ RUN \
     /opt/netbox/venv/bin/pip install \
       -r /requirements.txt \
       -r /requirements-container.txt
+      -r /requirements-plugins.txt
 
 ###
 # Main stage
@@ -92,13 +93,6 @@ COPY docker/housekeeping.sh /opt/netbox/housekeeping.sh
 COPY docker/launch-netbox.sh /opt/netbox/launch-netbox.sh
 COPY configuration/ /etc/netbox/config/
 COPY docker/nginx-unit.json /etc/unit/
-
-##################
-# OxCERT Additions
-##################
-
-COPY requirements-plugins.txt /opt/netbox
-RUN /opt/netbox/venv/bin/pip install -r /requirements-plugins.txt
 
 WORKDIR /opt/netbox/netbox
 
