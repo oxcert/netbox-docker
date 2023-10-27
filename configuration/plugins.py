@@ -6,8 +6,8 @@
 
 PLUGINS = ["netbox_dns"]
 
-# PLUGINS_CONFIG = {
-#   "netbox_bgp": {
-#     ADD YOUR SETTINGS HERE
-#   }
-# }
+PLUGINS_CONFIG = {
+  "netbox_dns": {
+    'feature_ipam_coupling': True,
+  }
+}
