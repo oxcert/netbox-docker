@@ -2,7 +2,7 @@
 
 This is OxCERT's fork of the [netbox-docker](https://github.com/netbox-community/netbox-docker/wiki) repository.
 
-[![push](https://github.com/oxcert/netbox-docker/actions/workflows/push.yml/badge.svg)](https://github.com/oxcert/netbox-docker/actions/workflows/push.yml) 
+[![push](https://github.com/oxcert/netbox-docker/actions/workflows/push.yml/badge.svg)](https://github.com/oxcert/netbox-docker/actions/workflows/push.yml) [![release](https://github.com/oxcert/netbox-docker/actions/workflows/release.yml/badge.svg)](https://github.com/oxcert/netbox-docker/actions/workflows/release.yml)
 
 We have a local branch [oxcert](https://github.com/oxcert/netbox-docker/tree/oxcert) which has been set as the default branch in this repository.
 The idea is to keep the [release](https://github.com/oxcert/netbox-docker/tree/release) branch in synch with upstream but keep all our changes in
