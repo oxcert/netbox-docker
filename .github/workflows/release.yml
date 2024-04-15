@@ -15,7 +15,7 @@ jobs:
       matrix:
         build_cmd:
           - ./build-latest.sh
-          - PRERELEASE=true ./build-latest.sh
+          #- PRERELEASE=true ./build-latest.sh
           - ./build.sh develop
         platform:
           - linux/amd64,linux/arm64
