@@ -11,7 +11,7 @@ the oxcert branch, from where we build our netbox containers, etc. When there ar
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/netbox-community/netbox-docker)][github-release]
 [![GitHub stars](https://img.shields.io/github/stars/netbox-community/netbox-docker)][github-stargazers]
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/netbox-community/netbox-docker)
-![Github release workflow](https://img.shields.io/github/actions/workflow/status/netbox-community/netbox-docker/release.yml?branch=release)
+![GitHub release workflow](https://img.shields.io/github/actions/workflow/status/netbox-community/netbox-docker/release.yml?branch=release)
 ![Docker Pulls](https://img.shields.io/docker/pulls/netboxcommunity/netbox)
 [![GitHub license](https://img.shields.io/github/license/netbox-community/netbox-docker)][netbox-docker-license]
 
@@ -19,7 +19,7 @@ the oxcert branch, from where we build our netbox containers, etc. When there ar
 Images are built regularly using the code in that repository and are pushed to [Docker Hub][netbox-dockerhub], [Quay.io][netbox-quayio] and [GitHub Container Registry][netbox-ghcr].
 
 Do you have any questions?
-Before opening an issue on Github,
+Before opening an issue on GitHub,
 please join [our Slack][netbox-docker-slack] and ask for help in the [`#netbox-docker`][netbox-docker-slack-channel] channel.
 
 [github-stargazers]: https://github.com/netbox-community/netbox-docker/stargazers
