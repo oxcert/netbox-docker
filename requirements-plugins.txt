@@ -1,1 +1,1 @@
-#netbox-plugin-dns
+netbox-plugin-dns
