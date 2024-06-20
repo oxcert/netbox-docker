@@ -29,7 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       wheel
 
 ARG NETBOX_PATH
-COPY ${NETBOX_PATH}/requirements.txt requirements-container.txt requirements-plugins.txt /
+COPY ${NETBOX_PATH}/requirements.txt requirements-container.txt /
 RUN \
     # Gunicorn is not needed because we use Nginx Unit
     sed -i -e '/gunicorn/d' /requirements.txt && \
@@ -39,8 +39,7 @@ RUN \
     sed -i -e 's/social-auth-core/social-auth-core\[all\]/g' /requirements.txt && \
     /opt/netbox/venv/bin/pip install \
       -r /requirements.txt \
-      -r /requirements-container.txt \
-      -r /requirements-plugins.txt
+      -r /requirements-container.txt
 
 ###
 # Main stage
