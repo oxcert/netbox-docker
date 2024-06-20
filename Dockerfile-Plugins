@@ -1,0 +1,10 @@
+# https://github.com/netbox-community/netbox-docker/wiki/Using-Netbox-Plugins
+
+FROM ghcr.io/oxcert/netbox:latest
+
+COPY ./plugin_requirements.txt /opt/netbox/
+RUN /opt/netbox/venv/bin/pip install --no-warn-script-location -r /opt/netbox/plugin_requirements.txt
+
+COPY plugins-override.py /etc/netbox/config/plugins.py
+RUN SECRET_KEY="dummydummydummydummydummydummydummydummydummydummy" /opt/netbox/venv/bin/python /opt/netbox/netbox/manage.py collectstatic --no-input
+

@@ -1,0 +1,19 @@
+version: '3.4' # This is NOT the version of NetBox! No need to adjust :)
+services:
+  netbox:
+    image: ghcr.io/oxcert/netbox:${VERSION-latest}-plugins
+    ports:
+      - 8000:8080
+    build:
+      context: .
+      dockerfile: Dockerfile-Plugins
+  netbox-worker:
+    image: ghcr.io/oxcert/netbox:${VERSION-latest}-plugins
+    build:
+      context: .
+      dockerfile: Dockerfile-Plugins
+  netbox-housekeeping:
+    image: ghcr.io/oxcert/netbox:${VERSION-latest}-plugins
+    build:
+      context: .
+      dockerfile: Dockerfile-Plugins
