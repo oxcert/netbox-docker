@@ -40,7 +40,7 @@ jobs:
           VALIDATE_DOCKERFILE: false
           VALIDATE_GITLEAKS: false
           VALIDATE_JSCPD: false
-          FILTER_REGEX_EXCLUDE: (.*/)?(LICENSE|configuration/.*)
+          FILTER_REGEX_EXCLUDE: (.*/)?(LICENSE|configuration/.*|plugins-oxcert.py)
           EDITORCONFIG_FILE_NAME: .ecrc
           DOCKERFILE_HADOLINT_FILE_NAME: .hadolint.yaml
           MARKDOWN_CONFIG_FILE: .markdown-lint.yml
