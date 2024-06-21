@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: Dockerfile-Plugins
   netbox-housekeeping:
-    image: ghcr.io/oxcert/netbox:${VERSION-latest}-plugins
+    image: ghcr.io/oxcert/netbox:${VERSION-latest}
     build:
       context: .
       dockerfile: Dockerfile-Plugins
