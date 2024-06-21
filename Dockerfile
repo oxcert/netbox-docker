@@ -92,7 +92,8 @@ COPY docker/launch-netbox.sh /opt/netbox/launch-netbox.sh
 COPY configuration/ /etc/netbox/config/
 COPY docker/nginx-unit.json /etc/unit/
 
-COPY plugins-oxcert.py /etc/netbox/config/plugins.py
+# Enabling the netbox-dns-plugin breaks unit testing.
+# COPY plugins-oxcert.py /etc/netbox/config/plugins.py
 
 WORKDIR /opt/netbox/netbox
 
