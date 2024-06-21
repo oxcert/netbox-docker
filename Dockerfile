@@ -29,7 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       wheel
 
 ARG NETBOX_PATH
-COPY ${NETBOX_PATH}/requirements.txt requirements-container.txt /
+COPY ${NETBOX_PATH}/requirements.txt requirements-container.txt requirements-plugins.txt /
 RUN \
     # Gunicorn is not needed because we use Nginx Unit
     sed -i -e '/gunicorn/d' /requirements.txt && \
@@ -39,7 +39,8 @@ RUN \
     sed -i -e 's/social-auth-core/social-auth-core\[all\]/g' /requirements.txt && \
     /opt/netbox/venv/bin/pip install \
       -r /requirements.txt \
-      -r /requirements-container.txt
+      -r /requirements-container.txt \
+      -r /requirements-plugins.txt
 
 ###
 # Main stage
@@ -81,7 +82,7 @@ COPY --from=builder /opt/netbox/venv /opt/netbox/venv
 ARG NETBOX_PATH
 COPY ${NETBOX_PATH} /opt/netbox
 # Copy the modified 'requirements*.txt' files, to have the files actually used during installation
-COPY --from=builder /requirements.txt /requirements-container.txt /opt/netbox/
+COPY --from=builder /requirements.txt /requirements-container.txt /requirements-plugins.txt /opt/netbox/
 
 COPY docker/configuration.docker.py /opt/netbox/netbox/netbox/configuration.py
 COPY docker/ldap_config.docker.py /opt/netbox/netbox/netbox/ldap_config.py
@@ -90,6 +91,8 @@ COPY docker/housekeeping.sh /opt/netbox/housekeeping.sh
 COPY docker/launch-netbox.sh /opt/netbox/launch-netbox.sh
 COPY configuration/ /etc/netbox/config/
 COPY docker/nginx-unit.json /etc/unit/
+
+COPY plugins-oxcert.py /etc/netbox/config/plugins.py
 
 WORKDIR /opt/netbox/netbox
 
