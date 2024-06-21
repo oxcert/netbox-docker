@@ -1,5 +1,5 @@
 ARG FROM
-FROM ${FROM} as builder
+FROM ${FROM} AS builder
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -qq \
@@ -46,7 +46,7 @@ RUN \
 ###
 
 ARG FROM
-FROM ${FROM} as main
+FROM ${FROM} AS main
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -qq \
