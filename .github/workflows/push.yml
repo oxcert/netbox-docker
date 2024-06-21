@@ -40,7 +40,7 @@ jobs:
           VALIDATE_DOCKERFILE: false
           VALIDATE_GITLEAKS: false
           VALIDATE_JSCPD: false
-          FILTER_REGEX_EXCLUDE: (.*/)?(LICENSE|configuration/.*)
+          FILTER_REGEX_EXCLUDE: (.*/)?(LICENSE|configuration/.*|plugins-oxcert.py)
           EDITORCONFIG_FILE_NAME: .ecrc
           DOCKERFILE_HADOLINT_FILE_NAME: .hadolint.yaml
           MARKDOWN_CONFIG_FILE: .markdown-lint.yml
@@ -54,11 +54,15 @@ jobs:
       matrix:
         build_cmd:
           - ./build-latest.sh
-          #- PRERELEASE=true ./build-latest.sh
           - ./build.sh develop
         platform:
           - linux/amd64
-          - linux/arm64
+          
+          # This workflow runs tests only, and doesn't push to the
+          # container repository.  Since building on arm64 under QEMU
+          # is impossibly slow, and we don't have a native arm64
+          # option right now, just run the testing on amd64.
+          #- linux/arm64
         os:
           - ubuntu-latest
       fail-fast: false
