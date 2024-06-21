@@ -4,12 +4,12 @@
 #   ./test.sh latest
 #   ./test.sh v2.9.7
 #   ./test.sh develop-2.10
-#   IMAGE='netboxcommunity/netbox:latest'        ./test.sh
-#   IMAGE='netboxcommunity/netbox:v2.9.7'        ./test.sh
-#   IMAGE='netboxcommunity/netbox:develop-2.10'  ./test.sh
-#   export IMAGE='netboxcommunity/netbox:latest';       ./test.sh
-#   export IMAGE='netboxcommunity/netbox:v2.9.7';       ./test.sh
-#   export IMAGE='netboxcommunity/netbox:develop-2.10'; ./test.sh
+#   IMAGE='ghcr.io/oxcert/netbox:latest'        ./test.sh
+#   IMAGE='ghcr.io/oxcert/netbox:v2.9.7'        ./test.sh
+#   IMAGE='ghcr.io/oxcert/netbox:develop-2.10'  ./test.sh
+#   export IMAGE='ghcr.io/oxcert/netbox:latest';       ./test.sh
+#   export IMAGE='ghcr.io/oxcert/netbox:v2.9.7';       ./test.sh
+#   export IMAGE='ghcr.io/oxcert/netbox:develop-2.10'; ./test.sh
 
 # exit when a command exits with an exit code != 0
 set -e
@@ -20,9 +20,9 @@ source ./build-functions/gh-functions.sh
 # of the Docker Image that is to be used
 if [ "${1}x" != "x" ]; then
   # Use the command line argument
-  export IMAGE="netboxcommunity/netbox:${1}"
+  export IMAGE="ghcr.io/oxcert/netbox:${1}"
 else
-  export IMAGE="${IMAGE-netboxcommunity/netbox:latest}"
+  export IMAGE="${IMAGE-ghcr.io/oxcert/netbox:latest}"
 fi
 
 # Ensure that an IMAGE is defined

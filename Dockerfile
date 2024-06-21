@@ -1,5 +1,5 @@
 ARG FROM
-FROM ${FROM} as builder
+FROM ${FROM} AS builder
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -qq \
@@ -47,7 +47,7 @@ RUN \
 ###
 
 ARG FROM
-FROM ${FROM} as main
+FROM ${FROM} AS main
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -qq \
@@ -82,7 +82,7 @@ COPY --from=builder /opt/netbox/venv /opt/netbox/venv
 ARG NETBOX_PATH
 COPY ${NETBOX_PATH} /opt/netbox
 # Copy the modified 'requirements*.txt' files, to have the files actually used during installation
-COPY --from=builder /requirements.txt /requirements-container.txt /opt/netbox/
+COPY --from=builder /requirements.txt /requirements-container.txt /requirements-plugins.txt /opt/netbox/
 
 COPY docker/configuration.docker.py /opt/netbox/netbox/netbox/configuration.py
 COPY docker/ldap_config.docker.py /opt/netbox/netbox/netbox/ldap_config.py
@@ -91,6 +91,9 @@ COPY docker/housekeeping.sh /opt/netbox/housekeeping.sh
 COPY docker/launch-netbox.sh /opt/netbox/launch-netbox.sh
 COPY configuration/ /etc/netbox/config/
 COPY docker/nginx-unit.json /etc/unit/
+
+# Enabling the netbox-dns-plugin breaks unit testing.
+# COPY plugins-oxcert.py /etc/netbox/config/plugins.py
 
 WORKDIR /opt/netbox/netbox
 
