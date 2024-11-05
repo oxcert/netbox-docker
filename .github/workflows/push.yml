@@ -57,7 +57,7 @@ jobs:
           - ./build.sh develop
         platform:
           - linux/amd64
-          
+
           # This workflow runs tests only, and doesn't push to the
           # container repository.  Since building on arm64 under QEMU
           # is impossibly slow, and we don't have a native arm64
@@ -79,6 +79,7 @@ jobs:
       - id: qemu-setup
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+        if: matrix.platform == 'linux/arm64'
       - id: buildx-setup
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3

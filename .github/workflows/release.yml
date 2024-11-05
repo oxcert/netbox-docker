@@ -38,12 +38,6 @@ jobs:
         env:
           CHECK_ONLY: "true"
         run: ${{ matrix.build_cmd }}
-
-      # - id: test-image
-      #   name: Test the image
-      #   run: IMAGE="${FINAL_DOCKER_TAG}" ./test.sh
-      #   if: steps.docker-build.outputs.skipped != 'true'
-      # ghcr.io
       - id: ghcr-io-login
         name: Login to GitHub Container Registry
         uses: docker/login-action@v3
