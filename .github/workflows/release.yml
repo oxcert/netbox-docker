@@ -45,7 +45,7 @@ jobs:
           version: "lab:latest"
           driver: cloud
           endpoint: "netboxcommunity/netbox-default"
-        if: steps.check-build-needed.outputs.skipped != 'true'        
+        if: steps.check-build-needed.outputs.skipped != 'true'
       - id: ghcr-io-login
         name: Login to GitHub Container Registry
         uses: docker/login-action@v3
