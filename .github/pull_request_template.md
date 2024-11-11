@@ -18,5 +18,5 @@ on all relevant titles.
 Please put an x into the brackets (like `[x]`) if you've completed that task.
 -->
 
-* [ ] I have read the comments and followed the PR template.
-* [ ] My PR targets the `develop` branch.
+- [ ] I have read the comments and followed the PR template.
+- [ ] My PR targets the `develop` branch.
