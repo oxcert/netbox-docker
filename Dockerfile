@@ -1,0 +1,4 @@
+ARG UPSTREAM
+FROM ${UPSTREAM} AS netbox
+
+LABEL maintainer="OxCERT"
