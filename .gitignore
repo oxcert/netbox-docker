@@ -1,14 +1,42 @@
-*.sql.gz
-.netbox
-.python-version
-docker-compose.override.yml
-*.pem
-configuration/*
-!configuration/configuration.py
-!configuration/extra.py
-configuration/ldap/*
-!configuration/ldap/extra.py
-!configuration/ldap/ldap_config.py
-!configuration/logging.py
-!configuration/plugins.py
-super-linter.log
+# -*- mode: gitignore; -*-
+# See: https://github.com/github/gitignore/tree/main/Global
+
+## Emacs
+
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+## MacOS
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
