@@ -1,0 +1,30 @@
+---
+# These settings are synced to GitHub by
+# https://probot.github.io/apps/settings/
+
+# Uncomment the lines marked with #%# and fill in the correct values
+# for this repository.
+
+# This settings.yml will be merged with the Organization defaults in
+# https://github.com/oxcert/.github/blob/main/.github/settings.yml Set
+# the repository name and description here, plus anything you want to
+# override from the defaults.
+
+# Note: changes to the default settings.yml do *not* trigger Probot
+# `settings` to run on all the other repositories using the settings
+# app.  It needs a tweak to the settings.yml in each of those
+# repositories to pull in the new defaults.
+
+repository:
+  # See
+  # https://docs.github.com/en/rest/reference/repos#update-a-repository
+  # for all available settings.
+
+  # The name of the repository. Changing this will rename the
+  # repository
+  name: netbox-docker
+
+  # A short description of the repository that will show up on GitHub
+  description: OxCERT's customized 🐳 Docker Image of NetBox
+
+# Everything else can be left to default.

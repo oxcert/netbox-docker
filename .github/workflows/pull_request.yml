@@ -1,0 +1,36 @@
+---
+name: "Lint, Build and maybe Push"
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: >-
+    ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    uses: ./.github/workflows/do_lint.yml
+    with:
+      python_version: "3.13"
+
+  build:
+    needs: lint
+
+    strategy:
+      matrix:
+        upstream:
+          - netboxcommunity/netbox:latest
+
+    uses: ./.github/workflows/do_build_and_push.yml
+    with:
+      upstream: ${{ matrix.upstream }}
+      registry: ghcr.io
+      username: ${{ github.actor }}
+      image_name: ${{ github.repository }}
+      platforms: linux/amd64,linux/arm64
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

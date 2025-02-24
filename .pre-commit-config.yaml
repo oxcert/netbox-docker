@@ -1,0 +1,54 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-symlinks
+      - id: destroyed-symlinks
+
+      - id: check-json
+      - id: check-yaml
+      - id: check-toml
+
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.22
+    hooks:
+      - id: mdformat
+        types: [markdown]
+        additional_dependencies:
+          - setuptools
+          - mdformat-toc
+          - mdformat-beautysh
+          - mdformat-gfm
+          - mdformat-tables
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args:
+          - --strict
+
+  - repo: https://github.com/hadolint/hadolint.git
+    rev: v2.13.1-beta
+    hooks:
+      - id: hadolint-docker
+        entry: hadolint/hadolint:v2.12.0 hadolint
+        files: ^Dockerfile*
+        args:
+          - --ignore=DL3008
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.7
+    hooks:
+      - id: actionlint
+        files: ^\.github/workflows

@@ -1,0 +1,33 @@
+---
+name: "Build and maybe Push"
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '20 3 * * 1'
+
+concurrency:
+  group: >-
+    ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        upstream:
+          - netboxcommunity/netbox:latest
+
+
+    uses: ./.github/workflows/do_build_and_push.yml
+    with:
+      upstream: ${{ matrix.upstream }}
+      registry: ghcr.io
+      username: ${{ github.actor }}
+      image_name: ${{ github.repository }}
+      platforms: linux/amd64,linux/arm64
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
