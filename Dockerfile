@@ -1,4 +1,4 @@
 ARG UPSTREAM
-FROM ${UPSTREAM} AS netbox
+FROM ${UPSTREAM-netboxcommunity/netbox:latest} AS netbox
 
 LABEL maintainer="OxCERT"
