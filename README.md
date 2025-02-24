@@ -18,3 +18,7 @@ the exact same image as will be used in production.
 ```
 netboxcommunity/netbox:latest
 ```
+
+## References
+
+[Using Netbox Plugins](https://github.com/netbox-community/netbox-docker/wiki/Using-Netbox-Plugins) with Docker.
